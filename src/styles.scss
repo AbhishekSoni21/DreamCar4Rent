@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import './appStyles/colors';
 
 a{
   text-decoration: none !important;
@@ -7,3 +8,21 @@ a{
 p{
   margin-bottom: unset !important;
 }
+
+input,button,a{
+  cursor: pointer;
+}
+
+.errorbg{
+  background-color: $errorModal;
+}
+
+.successbg{
+  background: $successModal;
+}
+
+.warningbg{
+  background: $warningModal;
+}
+
+

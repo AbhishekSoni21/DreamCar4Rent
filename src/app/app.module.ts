@@ -5,11 +5,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
+import { PopupModalComponent } from './components/popup-modal/popup-modal.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    PopupModalComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

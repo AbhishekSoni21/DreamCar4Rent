@@ -1,0 +1,19 @@
+<!-- Vertically centered modal -->
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" [ngClass]="{'errorbg text-danger':model?.status==='error','successbg text-success':model?.status==='success','warningbg text-warning':model?.status==='warning'}">
+          <h5 class="modal-title" id="exampleModalLabel">{{model?.title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" [ngClass]="{'text-danger':model?.status==='error','text-success':model?.status==='success','text-warning':model?.status==='warning'}">
+          {{model?.message}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn"  [ngClass]="{'btn-outline-danger':model?.status==='error','btn-outline-success':model?.status==='success','btn-outline-warning':model?.status==='warning'}" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
