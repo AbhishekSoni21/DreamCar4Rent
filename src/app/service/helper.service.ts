@@ -79,4 +79,12 @@ export class HelperService {
       }
       return throwError(obj)
   }
+
+  setDataInLocalStorage(key:string,value:any):void{
+    localStorage.setItem(key,JSON.stringify(value))
+  }
+
+  getDataFromLocalStorage(key:string):any{
+    return JSON.parse(localStorage.getItem(key)!)
+  }
 }
