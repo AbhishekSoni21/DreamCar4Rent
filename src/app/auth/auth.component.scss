@@ -1,3 +1,18 @@
+@import '../../appStyles/colors';
+
 .ng-touched.ng-invalid{
-border-color: red;
+border-color: $red;
+}
+
+.white{
+  color: $white;
+}
+
+span.input-group-text{
+  background:$white;
+}
+
+.pageLayout{
+  height: 80%;
+    padding-top: 15%;
 }

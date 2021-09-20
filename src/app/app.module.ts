@@ -1,19 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { PopupModalComponent } from './components/popup-modal/popup-modal.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { AppHttpInterceptor } from './http.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     PopupModalComponent,
-    LoaderComponent
+    LoaderComponent,
+    NavbarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +27,11 @@ import { LoaderComponent } from './components/loader/loader.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:AppHttpInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

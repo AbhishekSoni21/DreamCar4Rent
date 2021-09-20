@@ -25,4 +25,14 @@ input,button,a{
   background: $warningModal;
 }
 
+.navbar-light .navbar-nav .nav-link{
+  color: rgba(0, 0, 0,1);
+}
+html,
+body{
+  background: url('./backgroundImages/black\ wall.jpg');
+  background-size: cover;
+  height: 100%;
+}
+
 

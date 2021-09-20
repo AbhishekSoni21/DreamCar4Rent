@@ -1,10 +1,12 @@
 export interface SignUpInResponse{
-  idToken	:string,
-  email	:string,
-  refreshToken:	string,
-  expiresIn	:string,
-  localId :string,
-  registered?:boolean
+  displayName?: string,
+  email: string,
+  expiresIn: string,
+  idToken: string,
+  kind?: string,
+  localId: string,
+  refreshToken: string,
+  registered?: boolean,
 }
 
 export interface ModelResponse{
@@ -12,3 +14,4 @@ export interface ModelResponse{
   message:string;
   status:string;
 }
+

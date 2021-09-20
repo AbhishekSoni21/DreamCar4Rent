@@ -1,0 +1,20 @@
+@import '../../../appStyles/colors';
+
+.navbar-bgcolor{
+  background: linear-gradient(0deg, $azure, transparent);
+}
+
+.appName{
+  font-family: cursive;
+  font-weight: 600;
+  font-variant-numeric: oldstyle-nums;
+  color: $white;
+}
+
+.white{
+  color: $white;
+}
+
+.appNavbar{
+  border-bottom: 2px solid $blue;
+}
