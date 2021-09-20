@@ -20,4 +20,8 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+  handleSignOut(){
+    this.appService.signOut();
+  }
+
 }

@@ -87,4 +87,8 @@ export class HelperService {
   getDataFromLocalStorage(key:string):any{
     return JSON.parse(localStorage.getItem(key)!)
   }
+
+  clearLocalStorage(key:string){
+    localStorage.removeItem(key)
+  }
 }
