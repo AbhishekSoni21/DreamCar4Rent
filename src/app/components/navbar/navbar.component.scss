@@ -9,6 +9,10 @@
   font-weight: 600;
   font-variant-numeric: oldstyle-nums;
   color: $white;
+  &:hover{
+    color: $white;
+    cursor: pointer;
+  }
 }
 
 .white{
@@ -18,3 +22,4 @@
 .appNavbar{
   border-bottom: 2px solid $blue;
 }
+

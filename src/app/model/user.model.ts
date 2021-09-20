@@ -1,5 +1,5 @@
 export class User{
-  constructor(public name="" ,public email:string,public idToken:string,private _token:string,private _tokenExpirationDate:Date){
+  constructor(public name:string ,public email:string,public idToken:string,public localId:string,public _token:string,public _tokenExpirationDate:Date,public registered:boolean){
 
   }
 

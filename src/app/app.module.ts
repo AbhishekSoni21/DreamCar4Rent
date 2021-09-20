@@ -10,6 +10,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { AppHttpInterceptor } from './http.interceptor';
+import { ViewEditProfileComponent } from './page/view-edit-profile/view-edit-profile.component';
+import { UserSectionComponent } from './page/user-section/user-section.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AppHttpInterceptor } from './http.interceptor';
     PopupModalComponent,
     LoaderComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    ViewEditProfileComponent,
+    UserSectionComponent
   ],
   imports: [
     BrowserModule,

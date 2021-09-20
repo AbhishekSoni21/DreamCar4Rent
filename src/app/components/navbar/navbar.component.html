@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light appNavbar">
   <div class="container-fluid">
-    <a class="navbar-brand appName" href="#">DreamCar4Rent</a>
+    <div class="navbar-brand appName" routerLink=[]>DreamCar4Rent</div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,12 +12,12 @@
       </ul>
       <ul class="navbar-nav d-flex mx-5" *ngIf="loggedIn">
         <li class="nav-item dropdown">
-         <a class="nav-link d-flex" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+         <a class="nav-link d-flex" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="true">
           <i class="fas fa-user-circle fa-2x mx-2 white"></i><span class="m-auto white">Abhishek Soni</span>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item"><i class="far fa-eye"></i><span class="mx-3">View Profile</span> </a></li>
-            <li><a class="dropdown-item"><i class="fas fa-user-edit"></i><span class="mx-3">Edit Profile</span></a></li>
+            <li><a class="dropdown-item" routerLink="user"><i class="far fa-eye"></i><span class="mx-3">View/Edit Profile</span> </a></li>
+            <li><a class="dropdown-item"><i class="fas fa-user-edit"></i><span class="mx-3">Your Booking</span></a></li>
             <li><a class="dropdown-item"><i class="fas fa-key"></i><span class="mx-3">Change Password</span></a></li>
             <li><a class="dropdown-item"><i class="fas fa-sign-out-alt"></i><span class="mx-3" (click)="handleSignOut()">Sign Out</span></a></li>
           </ul>

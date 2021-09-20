@@ -38,9 +38,9 @@ export class AppServiceService {
   }
 
   autheticateUser(value:SignUpInResponse):void{
-    const {displayName,email,idToken,refreshToken,expiresIn}=value;
+    const {displayName="",email,idToken,localId,refreshToken,expiresIn,registered=false}=value;
     const expirationDate = new Date(new Date().getTime()+(parseInt(expiresIn)*1000));
-    const user = new User(displayName,email,idToken,refreshToken,new Date(expirationDate))
+    const user = new User(displayName,email,idToken,localId,refreshToken,new Date(expirationDate),registered)
     this.user.next(user);
     console.log("user data",user);
     this.helperService.setDataInLocalStorage("userData",user)
@@ -57,7 +57,7 @@ export class AppServiceService {
       return
     }
 
-    const loggedInUser = new User("",user.email,user.idToken,user['_token'],user['_tokenExpirationDate'])
+    const loggedInUser = new User(user.name,user.email,user.idToken,user.localId, user._token,user._tokenExpirationDate,user.registered)
 
     if(loggedInUser.token){
       this.user.next(loggedInUser);
