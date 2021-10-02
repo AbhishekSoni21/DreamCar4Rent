@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light appNavbar">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-brand appName" routerLink="dashboard">DreamCar4Rent</div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,9 +21,9 @@
         </a>
           <ul class="dropdown-menu navbarDropdown" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" routerLink="user"><i class="far fa-eye"></i><span class="mx-3">View/Edit Profile</span> </a></li>
-            <li><a class="dropdown-item"><i class="fas fa-user-edit"></i><span class="mx-3">Your Booking</span></a></li>
+            <li><a class="dropdown-item" routerLink="./user/myBooking"><i class="fas fa-user-edit"></i><span class="mx-3">My Booking</span></a></li>
             <li><a class="dropdown-item"><i class="fas fa-key"></i><span class="mx-3">Change Password</span></a></li>
-            <li><a class="dropdown-item"><i class="fas fa-sign-out-alt"></i><span class="mx-3" (click)="handleSignOut()">Sign Out</span></a></li>
+            <li><a class="dropdown-item"  (click)="handleSignOut()"><i class="fas fa-sign-out-alt"></i><span class="mx-3">Sign Out</span></a></li>
           </ul>
         </li>
       </ul>

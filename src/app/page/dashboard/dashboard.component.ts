@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
 import { Car, ModelResponse } from 'src/app/model/model';
 import { AppServiceService } from 'src/app/service/app-service.service';
 import { EncryptDecryptService } from 'src/app/service/encrypt-decrypt.service';
-import { carList } from 'src/assets/carList/carList';
 import * as bootstrap from 'bootstrap';
 
 
@@ -18,21 +17,23 @@ export class DashboardComponent implements OnInit {
   openRequestForm=false;
   selectedCar!:Car;
 
-  carData = carList;
-
   constructor(
     private appService: AppServiceService,
     private encryptDecrypt: EncryptDecryptService,
-    private router: Router
+    private router: Router,
+    private route:ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.appService
-      .getCarList()
-      .pipe(map((res) => this.encryptDecrypt.decryptData(res)))
-      .subscribe((data) => {
-        this.carList = data;
-      });
+    this.carList=this.encryptDecrypt.decryptData(this.route.snapshot.data.carlist)
+    // this.appService
+    //   .getCarList()
+    //   .pipe(map((res) => this.encryptDecrypt.decryptData(res)))
+    //   .subscribe((data) => {
+    //     this.carList = data;
+    //   });
+
+
     let uid = this.appService.user.value?.localId;
     this.appService.getUserData(uid!).subscribe(
       (res) => {

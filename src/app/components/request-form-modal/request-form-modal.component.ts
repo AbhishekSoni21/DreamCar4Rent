@@ -79,7 +79,7 @@ export class RequestFormModalComponent implements OnInit {
 
       let dataObj={
         title:'Success',
-        message:'Booking request is placed successfully.Please wait till your booking is confirmed.',
+        message:`Booking request with Id ${this.nextBookingId} is placed successfully.Please wait till your booking is confirmed.`,
         status:'success'
       };
       this.handleSucessFullBooking(dataObj);

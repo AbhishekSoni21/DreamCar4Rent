@@ -1,0 +1,15 @@
+@import "../../../appStyles/_colors.scss";
+
+.textColor {
+  color: $white !important;
+}
+
+.button-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+thead,tbody > tr >th,td{
+  text-align: center;
+}

@@ -31,6 +31,8 @@ export class AppServiceService {
   }
 
   signOut(){
+    console.log("sign out triggred");
+
     this.user.next(null);
     this.helperService.clearLocalStorage('userData');
     clearTimeout();

@@ -1,0 +1,34 @@
+<div class="container textColor">
+  <div class="row offset-md-1 col-md-10">
+    <table class="table table-striped table-hover">
+      <table class="table textColor">
+        <thead>
+          <tr>
+            <th scope="col">Booking Id</th>
+            <th scope="col">Booking Date</th>
+            <th scope="col">No Of Days</th>
+            <th scope="col">Booking Amount</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detail of userBookingDetail">
+            <th scope="row">{{ detail.bookingId }}</th>
+            <td>{{ detail.bookingFromDate }}</td>
+            <td>{{ detail.noOfDays }}</td>
+            <td>₹ {{ detail.bookingAmount }}</td>
+            <td>{{ detail.status }}</td>
+            <td class="button-wrapper">
+              <button class="btn btn-primary" (click)="updateBooking(detail)">
+                Update Booking</button
+              ><button class="btn btn-danger" (click)="cancelBooking(detail)">
+                Cancel Booking
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </table>
+  </div>
+</div>

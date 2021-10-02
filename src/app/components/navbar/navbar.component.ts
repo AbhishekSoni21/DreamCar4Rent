@@ -30,6 +30,8 @@ export class NavbarComponent implements OnInit {
   }
 
   handleSignOut(){
+    console.log("sign out clicked");
+
     this.appService.signOut();
   }
 

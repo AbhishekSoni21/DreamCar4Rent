@@ -18,6 +18,9 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { CardComponent } from './components/card/card.component';
 import { RequestFormModalComponent } from './components/request-form-modal/request-form-modal.component';
+import { UserBookingRecordComponent } from './page/user-booking-record/user-booking-record.component';
+import { FetchAllBookingDetailsResolver } from './resolver/fetch-all-booking-details.resolver';
+import { FetchAllCarListResolver } from './resolver/fetch-all-car-list.resolver';
 
 
 @NgModule({
@@ -32,6 +35,7 @@ import { RequestFormModalComponent } from './components/request-form-modal/reque
     UserSectionComponent,
     CardComponent,
     RequestFormModalComponent,
+    UserBookingRecordComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,7 @@ import { RequestFormModalComponent } from './components/request-form-modal/reque
     provide:HTTP_INTERCEPTORS,
     useClass:AppHttpInterceptor,
     multi:true
-  },{ provide: BUCKET, useValue: environment.firebaseConfig.storageBucket }],
+  },{ provide: BUCKET, useValue: environment.firebaseConfig.storageBucket },FetchAllBookingDetailsResolver,FetchAllCarListResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
