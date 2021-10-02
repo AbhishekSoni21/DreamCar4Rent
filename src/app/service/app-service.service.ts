@@ -49,7 +49,6 @@ export class AppServiceService {
     const expirationDate = new Date(new Date().getTime()+(parseInt(expiresIn)*1000));
     const user = new User(displayName,email,idToken,localId,refreshToken,new Date(expirationDate),registered)
     this.user.next(user);
-    console.log("user data",user);
     this.helperService.setDataInLocalStorage("userData",user)
     this.autoSignOut(parseInt(expiresIn)*1000);
     console.log("User will be auto sign out in ",parseInt(expiresIn)*1000 ,"seconds");
@@ -76,9 +75,7 @@ export class AppServiceService {
       let uid = this.user.value?.localId;
       this.getUserData(uid!).subscribe((res) => {
         if (!!res) {
-          console.log('user data in view', res);
           let decryptResponse = this.encryptDecrypt.decryptData(res.data);
-          console.log('decrypted user data in view', decryptResponse);
            this.userDetails.next(decryptResponse)
         }
         else{

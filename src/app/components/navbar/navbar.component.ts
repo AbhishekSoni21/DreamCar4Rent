@@ -26,8 +26,6 @@ export class NavbarComponent implements OnInit {
     this.appService.userDetails.subscribe(res=>{
       this.user=res?.displayName===undefined?null:res;
       console.log("nav",res);
-      console.log("nav user",this.user);
-
     }
     )
   }

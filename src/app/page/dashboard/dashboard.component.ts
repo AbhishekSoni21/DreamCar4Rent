@@ -35,7 +35,6 @@ export class DashboardComponent implements OnInit {
     this.appService.getUserData(uid!).subscribe(
       (res) => {
         if (!!res) {
-          console.log('user data in view', res);
           let decryptResponse = this.encryptDecrypt.decryptData(res.data);
           console.log('decrypted user data in view', decryptResponse);
           this.appService.userDetails.next(decryptResponse);

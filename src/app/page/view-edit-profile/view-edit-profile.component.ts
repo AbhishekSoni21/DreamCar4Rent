@@ -44,9 +44,7 @@ export class ViewEditProfileComponent implements OnInit {
     let uid = this.appService.user.value?.localId;
     this.appService.getUserData(uid!).subscribe((res) => {
       if (!!res) {
-        console.log('user data in view', res);
         let decryptResponse = this.encryptDecrypt.decryptData(res.data);
-        console.log('decrypted user data in view', decryptResponse);
         this.appService.userDetails.next(decryptResponse)
         this.userForm = new FormGroup({
           displayName: new FormControl(decryptResponse.displayName, [
@@ -122,17 +120,12 @@ export class ViewEditProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('value', this.userForm.value);
-    console.log('status', this.userForm.status);
     this.helperFunction.showLoader.next(true);
     let uid = this.appService.user.value?.localId;
     this.userForm.value['photoUrl'] = this.downloadURL?this.downloadURL:this.appService.userDetails.value?.photoUrl;
-    console.log("user form",this.userForm.value);
-
     let payload = this.encryptDecrypt.encryptData(this.userForm.value);
 
     this.appService.updateUserData(uid!, { data: payload }).subscribe((res) => {
-      console.log('res', res);
       this.helperFunction.showLoader.next(false);
       this.getUserData();
     },err=>{
