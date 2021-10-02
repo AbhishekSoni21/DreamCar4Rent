@@ -1,0 +1,34 @@
+.car-card-container{
+  display: flex;
+  flex-direction: row;
+  .image-container{
+    flex:1;
+  }
+  .car-detail-container{
+    flex: 1;
+    .detail-container{
+      display: flex;
+      flex-direction: column;
+      .detail-wrapper{
+        display: flex;
+        flex-direction: row;
+        .car-label{
+          font-weight: 600;
+          display: flex;
+          flex-direction: row;
+          width: 50%;
+          justify-content: space-between;
+        }
+        .car-label-detail{
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
+.booking-button-container{
+  text-align: center;
+}
+
+
+

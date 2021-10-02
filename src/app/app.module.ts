@@ -16,6 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import { CardComponent } from './components/card/card.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { environment } from 'src/environments/environment';
     DashboardComponent,
     ViewEditProfileComponent,
     UserSectionComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

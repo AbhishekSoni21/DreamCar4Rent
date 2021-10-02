@@ -1,0 +1,42 @@
+<div class="card offset-md-3 col-md-6">
+  <h5 class="card-header">{{ carData?.brand }}</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{ carData?.model }}</h5>
+    <div class="car-card-container">
+      <div class="image-container">
+        <img src="{{ carData?.photoUrl }}" width="80%" />
+      </div>
+      <div class="car-detail-container">
+        <div class="detail-container">
+          <div class="detail-wrapper">
+            <span class="car-label"><span>Color</span><span>:</span></span
+            ><span class="car-label-detail">{{ carData?.color }}</span>
+          </div>
+          <div class="detail-wrapper">
+            <span class="car-label"><span>Make Year</span> <span>:</span> </span
+            ><span class="car-label-detail">{{ carData?.year }}</span>
+          </div>
+          <div class="detail-wrapper">
+            <span class="car-label"><span>Seating Capacity</span><span>:</span>  </span
+            ><span class="car-label-detail">{{ carData?.seat }}</span>
+          </div>
+          <div class="detail-wrapper">
+            <span class="car-label"><span>Color</span><span>:</span>  </span
+            ><span class="car-label-detail">{{ carData?.color }}</span>
+          </div>
+          <div class="detail-wrapper">
+            <span class="car-label"><span>Fuel Type</span> <span>:</span></span
+            ><span class="car-label-detail">{{ carData?.fuelType }}</span>
+          </div>
+          <div class="detail-wrapper">
+            <span class="car-label"><span>Price</span>  <span>:</span> </span
+            ><span class="car-label-detail">{{ carData?.rentPrice }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-button-container">
+      <button href="#" class="btn btn-primary mt-3" (click)="requestBooking(carData)">Request Booking</button>
+    </div>
+  </div>
+</div>

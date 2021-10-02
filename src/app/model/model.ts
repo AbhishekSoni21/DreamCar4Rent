@@ -21,7 +21,7 @@ export interface Car{
   fuelType:string;
   model:string;
   rentPrice:string;
-  seats:string;
+  seat:string;
   year:string;
   photoUrl:string;
 }

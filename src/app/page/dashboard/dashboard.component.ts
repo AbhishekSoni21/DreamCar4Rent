@@ -13,7 +13,7 @@ import { carList } from 'src/assets/carList/carList';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  carList: Car = {} as Car;
+  carList: Car[] = [];
 
   carData = carList;
 

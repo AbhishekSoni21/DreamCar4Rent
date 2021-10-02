@@ -92,7 +92,7 @@ export class AppServiceService {
 
 
   getCarList():Observable<any>{
-    return this.httpClient.get(config.APP_Endpoint+'newCarList.json')
+    return this.httpClient.get(config.APP_Endpoint+'carData.json')
   }
 
   updateUserData(uid:string,payload:{}){
