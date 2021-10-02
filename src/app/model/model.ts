@@ -15,3 +15,13 @@ export interface ModelResponse{
   status:string;
 }
 
+export interface Car{
+  brand:string;
+  color:string;
+  fuelType:string;
+  model:string;
+  rentPrice:string;
+  seats:string;
+  year:string;
+  photoUrl:string;
+}

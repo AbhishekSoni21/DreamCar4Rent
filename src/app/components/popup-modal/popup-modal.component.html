@@ -3,11 +3,11 @@
   <div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header" [ngClass]="{'errorbg text-danger':model?.status==='error','successbg text-success':model?.status==='success','warningbg text-warning':model?.status==='warning'}">
+        <div class="modal-header" [ngClass]="{'errorbg custom-text-danger':model?.status==='error','successbg text-success':model?.status==='success','warningbg text-warning':model?.status==='warning'}">
           <h5 class="modal-title" id="exampleModalLabel">{{model?.title}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" [ngClass]="{'text-danger':model?.status==='error','text-success':model?.status==='success','text-warning':model?.status==='warning'}">
+        <div class="modal-body" [ngClass]="{'custom-text-danger':model?.status==='error','text-success':model?.status==='success','text-warning':model?.status==='warning'}">
           {{model?.message}}
         </div>
         <div class="modal-footer">

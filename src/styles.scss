@@ -25,12 +25,16 @@ input,button,a{
   background: $warningModal;
 }
 
+.custom-text-danger{
+  color: $red !important;
+}
+
 .navbar-light .navbar-nav .nav-link{
   color: rgba(0, 0, 0,1);
 }
 html,
 body{
-  background: url('./backgroundImages/black\ wall.jpg');
+  background: url('./backgroundImages/pexels-pixabay-326311.jpg');
   background-size: cover;
   height: 100%;
 }

@@ -12,6 +12,11 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { AppHttpInterceptor } from './http.interceptor';
 import { ViewEditProfileComponent } from './page/view-edit-profile/view-edit-profile.component';
 import { UserSectionComponent } from './page/user-section/user-section.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -22,20 +27,23 @@ import { UserSectionComponent } from './page/user-section/user-section.component
     NavbarComponent,
     DashboardComponent,
     ViewEditProfileComponent,
-    UserSectionComponent
+    UserSectionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,
     useClass:AppHttpInterceptor,
     multi:true
-  }],
+  },{ provide: BUCKET, useValue: environment.firebaseConfig.storageBucket }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

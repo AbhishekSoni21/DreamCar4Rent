@@ -1,0 +1,9 @@
+@import '../../../appStyles/colors';
+
+.userForm{
+    color:$white
+}
+
+.ng-touched.ng-invalid{
+  border-color: $red;
+  }

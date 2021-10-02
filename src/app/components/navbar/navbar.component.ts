@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { UserDetail } from 'src/app/model/user.model';
 import { AppServiceService } from 'src/app/service/app-service.service';
+import { EncryptDecryptService } from 'src/app/service/encrypt-decrypt.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +11,8 @@ import { AppServiceService } from 'src/app/service/app-service.service';
 })
 export class NavbarComponent implements OnInit {
   loggedIn=false;
-  constructor(private appService:AppServiceService) {  }
+  user={} as UserDetail|null;
+  constructor(private appService:AppServiceService,private encryptDecryptService:EncryptDecryptService) {  }
 
   ngOnInit(): void {
     this.appService.user.subscribe(res=>{
@@ -18,6 +22,14 @@ export class NavbarComponent implements OnInit {
         this.loggedIn=false
       }
     })
+
+    this.appService.userDetails.subscribe(res=>{
+      this.user=res?.displayName===undefined?null:res;
+      console.log("nav",res);
+      console.log("nav user",this.user);
+
+    }
+    )
   }
 
   handleSignOut(){

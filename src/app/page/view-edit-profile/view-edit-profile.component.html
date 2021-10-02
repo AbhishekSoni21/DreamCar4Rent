@@ -1,1 +1,43 @@
-<p style="color: white;">view-edit-profile works!</p>
+<!-- <p style="color: white;">view-edit-profile works!</p>
+<div style="background-color: white;">
+  <sub>** Image size should be less than 1Mb</sub>
+  <br>
+  <input type="file" (change)="uploadFile($event)" accept=".jpg, .png,.jpeg" />
+  <div>{{ uploadPercent | async }}</div>
+  <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+  <sub class="text-danger">{{errorMessage}}</sub>
+</div> -->
+
+<div class="container userForm mt-5">
+  <form class="row offset-md-3" [formGroup]="userForm" DateDirectiveValidator (ngSubmit)="onSubmit()">
+
+    <div class="mb-3 col-md-8">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Your Name" formControlName="displayName">
+      <small *ngIf="getControl('displayName')" class="form-text w-100 custom-text-danger">Name cannot be empty.</small>
+    </div>
+    <div class="mb-3 col-md-8 ">
+      <label for="contactNumber" class="form-label">Phone Number</label>
+      <input type="number" class="form-control" id="contactNumber" placeholder="Enter Your Phone Number" formControlName="contactnumber">
+      <small *ngIf="getControl('contactnumber')" class="form-text w-100 custom-text-danger">Phone Number must be of 10 character.</small>
+    </div>
+    <div class="mb-3 col-md-5 ">
+      <label for="dob" class="form-label">Date Of Birth</label>
+      <input class="form-control" type="date" id="dob" formControlName="dob" (change)="onDateChange($event)">
+      <small *ngIf="getControl('dob')" class="form-text w-100 custom-text-danger">Date of Birth cannot be empty or a future date.</small>
+    </div>
+    <div class="mb-3 col-md-8">
+
+      <label for="photo" class="form-label">Upload Your Photo</label>
+      <sub>  ** Image size should be less than 2Mb</sub>
+      <input class="form-control" (change)="uploadFile($event)" placeholder="Upload Your Photo" type="file" accept=".jpg, .png,.jpeg"  id="photo" formControlName="photoUrl">
+      <small class="form-text w-100 custom-text-danger">{{errorMessage}}</small>
+    </div>
+    <div class="progress col-md-8" style="height: 4px;padding-left: 0px;padding-right: 0px;" *ngIf="showprogress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width':(uploadPercent | async)+'%'}"></div>
+    </div>
+    <button class="btn btn-block btn-outline-primary offset-md-3 col-md-3  mt-2 mb-3" type="submit" [disabled]="!userForm.valid || imageUploading">Save</button>
+  </form>
+</div>
+
+

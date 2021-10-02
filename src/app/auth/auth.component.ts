@@ -47,7 +47,10 @@ export class AuthComponent implements OnInit {
           // this.dataObj.message="sign in successful";
           // this.dataObj.status="success";
           // this.dataObj.title="Success";
+          this.appService.setUserUID(res.localId);
           this.router.navigate(['dashboard'])
+
+
 
           this.helperFunction.showLoader.next(false);
         },err=>{

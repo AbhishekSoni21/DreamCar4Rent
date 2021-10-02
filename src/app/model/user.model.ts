@@ -17,3 +17,11 @@ export interface UserResponse{
   token:string;
   expiresIn:string;
 }
+
+
+export interface UserDetail{
+  contactnumber:string;
+  displayName: string;
+  dob:string;
+  photoUrl:string;
+}
