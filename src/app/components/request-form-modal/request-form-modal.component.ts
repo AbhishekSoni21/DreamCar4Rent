@@ -26,7 +26,6 @@ export class RequestFormModalComponent implements OnInit {
 
   ngOnInit(): void {
     let todaysDate=new Date().toISOString().slice(0,10).toString()
-    console.log("this.car in mpop",this.car);
     this.bookingForm=new FormGroup({
       bookingFromDate:new FormControl(todaysDate,[Validators.required]),
       noOfDays:new FormControl(1,[Validators.required,Validators.max(30)]),
@@ -46,7 +45,6 @@ export class RequestFormModalComponent implements OnInit {
             this.nextBookingId=(+new Date().getTime()+1).toString();
           }
         }
-      console.log("booking record fetched successfully",response);
     });
 
   }
@@ -69,7 +67,6 @@ export class RequestFormModalComponent implements OnInit {
   }
 
   handleSubmit(){
-    console.log("THIS REQUEST BOOKING",this.bookingForm.value);
     let currentBooking:BookingRequest=this.bookingForm.value;
     currentBooking.carId=this.car.carId;
     currentBooking.userId=this.appService.user.value?.localId!;
@@ -78,7 +75,6 @@ export class RequestFormModalComponent implements OnInit {
     currentBooking.bookingId=this.nextBookingId;
     this.bookingDetailsList.push(currentBooking)
     this.appService.updateAllBookingDetails(this.encryptDecrypt.encryptData(this.bookingDetailsList)).subscribe(res=>{
-      console.log("booking record posted successfully",res);
       document.querySelectorAll<HTMLElement>('[data-bs-dismiss="modal"]')[0].click()
 
       let dataObj={

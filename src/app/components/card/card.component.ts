@@ -14,9 +14,6 @@ export class CardComponent implements OnInit {
   @Output()handlerequestBooking=new EventEmitter();
 
   ngOnInit(): void {
-
-    console.log("this.car",this.carData);
-
   }
 
   requestBooking(data:Car){

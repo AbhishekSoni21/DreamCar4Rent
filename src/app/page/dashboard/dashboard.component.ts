@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
       .getCarList()
       .pipe(map((res) => this.encryptDecrypt.decryptData(res)))
       .subscribe((data) => {
-        console.log('car list is', data);
         this.carList = data;
       });
     let uid = this.appService.user.value?.localId;
@@ -39,7 +38,6 @@ export class DashboardComponent implements OnInit {
       (res) => {
         if (!!res) {
           let decryptResponse = this.encryptDecrypt.decryptData(res.data);
-          console.log('decrypted user data in view', decryptResponse);
           this.appService.userDetails.next(decryptResponse);
         } else {
           this.router.navigate(['user']);
