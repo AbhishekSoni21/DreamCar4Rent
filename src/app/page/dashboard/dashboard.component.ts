@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, tap } from 'rxjs/operators';
-import { Car } from 'src/app/model/model';
+import { Car, ModelResponse } from 'src/app/model/model';
 import { AppServiceService } from 'src/app/service/app-service.service';
 import { EncryptDecryptService } from 'src/app/service/encrypt-decrypt.service';
 import { carList } from 'src/assets/carList/carList';
-// import {} from '';
+import * as bootstrap from 'bootstrap';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +15,8 @@ import { carList } from 'src/assets/carList/carList';
 })
 export class DashboardComponent implements OnInit {
   carList: Car[] = [];
+  openRequestForm=false;
+  selectedCar!:Car;
 
   carData = carList;
 
@@ -47,4 +50,12 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
+  requestBooking(data:Car){
+  this.selectedCar=data;
+    this.openRequestForm=true;
+    var myModal = new bootstrap.Modal(document.getElementById('requestFormPopUP')!)
+    myModal.show()
+  }
+
 }

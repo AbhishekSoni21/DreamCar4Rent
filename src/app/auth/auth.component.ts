@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, MinLengthValidator, Validators } from '@angular/forms';
+import {  FormBuilder,  FormGroup,  Validators } from '@angular/forms';
 import { AppServiceService } from '../service/app-service.service';
 import * as bootstrap from 'bootstrap';
 import { ModelResponse } from '../model/model';

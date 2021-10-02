@@ -17,6 +17,7 @@ import { AngularFireStorageModule, BUCKET } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import { CardComponent } from './components/card/card.component';
+import { RequestFormModalComponent } from './components/request-form-modal/request-form-modal.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { CardComponent } from './components/card/card.component';
     ViewEditProfileComponent,
     UserSectionComponent,
     CardComponent,
+    RequestFormModalComponent,
   ],
   imports: [
     BrowserModule,

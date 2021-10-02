@@ -1,0 +1,142 @@
+<div
+  class="
+    modal-dialog
+    modal-dialog-centered
+    modal-dialog-scrollable
+    modal-fullscreen-sm-down
+  "
+  [ngStyle]="{ display: show ? 'unset' : 'none' }"
+>
+  <div
+    class="modal fade"
+    id="requestFormPopUP"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background: lightgrey">
+          <h5 class="modal-title" id="staticBackdropLabel">
+            Booking Request Form
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="bookingForm" (ngSubmit)="handleSubmit()">
+            <div class="mb-3 col-md-5">
+              <label for="bookingFromDate" class="form-label"
+                >Booking Date</label
+              >
+              <input
+                class="form-control"
+                type="date"
+                id="bookingFromDate"
+                formControlName="bookingFromDate"
+                (change)="onDateChange($event)"
+              />
+              <small
+                *ngIf="getControl('bookingFromDate')"
+                class="form-text w-100 custom-text-danger"
+                >Booking Date cannot be empty or a past date.</small
+              >
+            </div>
+            <div class="mb-3 col-md-8">
+              <label for="noOfDays" class="form-label">No Of Days</label>
+              <input
+                type="number"
+                class="form-control"
+                id="noOfDays"
+                placeholder="Enter No of Days"
+                formControlName="noOfDays"
+                (change)="calculateBookingAmount()"
+              />
+              <small
+                *ngIf="getControl('noOfDays')"
+                class="form-text w-100 custom-text-danger"
+                >No Of Days cannot be empty or more than 30 days.
+              </small>
+            </div>
+
+            <div class="mb-3 col-md-8">
+              <label for="comments" class="form-label">Comments</label>
+              <textarea
+                type="text"
+                class="form-control"
+                id="comments"
+                placeholder="Enter comments if any"
+                formControlName="comments"
+              ></textarea>
+              <small
+                *ngIf="getControl('comments')"
+                class="form-text w-100 custom-text-danger"
+                >Comments cannot be more than 300 characters.
+              </small>
+            </div>
+            <div class="modal-footer paymentSection">
+              <div class="individualAmount">
+                <span class="label">Total Rent Amount</span>
+                <span class="bookingAmount"
+                  ><span class="ruppeeSymbol">₹</span
+                  ><span class="amount">{{
+                    bookingAmount ? bookingAmount : +car?.rentPrice! * 1
+                  }}</span></span
+                >
+              </div>
+              <div class="individualAmount">
+                <span class="label">GST (5%)</span>
+                <span class="bookingAmount"
+                  ><span class="ruppeeSymbol">₹</span
+                  >{{
+                    bookingAmount
+                      ? bookingAmount * 0.05
+                      : +car?.rentPrice! * 1 * 0.05
+                  }}</span
+                >
+              </div>
+              <div class="individualAmount">
+                <span class="label">Security Deposit</span>
+                <span class="bookingAmount"
+                  ><span class="ruppeeSymbol">₹</span
+                  >{{
+                    bookingAmount
+                      ? bookingAmount * 0.3
+                      : +car?.rentPrice! * 1 * 0.3
+                  }}</span
+                >
+              </div>
+
+              <div class="payableAmount">
+                <span class="label">Total Payable Amount</span>
+                <span class="bookingAmount"
+                  ><span class="ruppeeSymbol">₹</span
+                  >{{
+                    bookingAmount
+                      ? bookingAmount +
+                        bookingAmount * 0.05 +
+                        bookingAmount * 0.3
+                      : +car?.rentPrice! * 1 +
+                        +car?.rentPrice! * 1 * 0.05 +
+                        +car?.rentPrice! * 1 * 0.3
+                  }}</span
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+              <button type="submit" class="btn btn-primary">Book</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-popup-modal [model]="dataObj" *ngIf="dataObj"></app-popup-modal>

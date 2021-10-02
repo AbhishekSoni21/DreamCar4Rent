@@ -10,7 +10,7 @@
         <div class="detail-container">
           <div class="detail-wrapper">
             <span class="car-label"><span>Color</span><span>:</span></span
-            ><span class="car-label-detail">{{ carData?.color }}</span>
+            ><span class="car-label-detail">{{ carData?.color |titlecase}}</span>
           </div>
           <div class="detail-wrapper">
             <span class="car-label"><span>Make Year</span> <span>:</span> </span
@@ -21,16 +21,12 @@
             ><span class="car-label-detail">{{ carData?.seat }}</span>
           </div>
           <div class="detail-wrapper">
-            <span class="car-label"><span>Color</span><span>:</span>  </span
-            ><span class="car-label-detail">{{ carData?.color }}</span>
-          </div>
-          <div class="detail-wrapper">
             <span class="car-label"><span>Fuel Type</span> <span>:</span></span
-            ><span class="car-label-detail">{{ carData?.fuelType }}</span>
+            ><span class="car-label-detail">{{ carData?.fuelType |titlecase }}</span>
           </div>
           <div class="detail-wrapper">
             <span class="car-label"><span>Price</span>  <span>:</span> </span
-            ><span class="car-label-detail">{{ carData?.rentPrice }}</span>
+            ><span class="car-label-detail"><span class="ruppeeSymbol">₹</span>{{ carData?.rentPrice }}</span>
           </div>
         </div>
       </div>

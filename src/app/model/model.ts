@@ -16,6 +16,7 @@ export interface ModelResponse{
 }
 
 export interface Car{
+  carId:string;
   brand:string;
   color:string;
   fuelType:string;
@@ -24,4 +25,15 @@ export interface Car{
   seat:string;
   year:string;
   photoUrl:string;
+}
+
+export interface BookingRequest{
+  bookingId:string;
+  bookingFromDate:string;
+  noOfDays:string;
+  comments:string;
+  carId:string;
+  bookingAmount:string;
+  userId:string;
+  status:string;
 }

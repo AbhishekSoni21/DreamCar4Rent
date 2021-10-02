@@ -1,16 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Car } from 'src/app/model/model';
-
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-
+  selectedCar!: Car;
+  openRequestForm=false;
   constructor() { }
 
   @Input('cardData') carData={} as Car
+  @Output()handlerequestBooking=new EventEmitter();
 
   ngOnInit(): void {
 
@@ -19,8 +20,7 @@ export class CardComponent implements OnInit {
   }
 
   requestBooking(data:Car){
-console.log("CAR DATA",data);
-
+    this.handlerequestBooking.emit(data)
   }
 
 }

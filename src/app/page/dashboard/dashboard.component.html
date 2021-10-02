@@ -1,4 +1,6 @@
 <div class="dashboard-container mt-5" *ngFor="let car of carList">
-  <app-card [cardData]="car"></app-card>
+  <app-card [cardData]="car" (handlerequestBooking)="requestBooking($event)"></app-card>
   asda
 </div>
+
+<app-request-form-modal [car]='selectedCar' [show]="openRequestForm"></app-request-form-modal>

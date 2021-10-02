@@ -19,13 +19,17 @@ export class EncryptDecryptService {
   }
 
   decryptData(data: any) {
-    var deData = CryptoJS.AES.decrypt(
-      decodeURIComponent(data),
-      'DevilNeverDies$403'
-    );
-    const decryptedData = JSON.parse(deData.toString(CryptoJS.enc.Utf8));
-    console.log('Decrypted Data', decryptedData);
-
+    if(data.length===0){
+      return ''
+    }else{
+      var deData = CryptoJS.AES.decrypt(
+        decodeURIComponent(data),
+        'DevilNeverDies$403'
+      );
+      const decryptedData = JSON.parse(deData.toString(CryptoJS.enc.Utf8));
+      console.log('Decrypted Data', decryptedData);
     return decryptedData;
+    }
+
   }
 }

@@ -107,4 +107,12 @@ export class AppServiceService {
     this.getuserDetail = this.httpClient.get(config.APP_Endpoint+'usersProfile/'+uid+'.json')
   }
 
+  updateAllBookingDetails(payload:string){
+    return this.httpClient.patch(config.APP_Endpoint+'AllBookingDetails.json',{'data':payload})
+  }
+
+  getAllBookingDetails():Observable<any>{
+    return this.httpClient.get(config.APP_Endpoint+'AllBookingDetails.json')
+  }
+
 }
