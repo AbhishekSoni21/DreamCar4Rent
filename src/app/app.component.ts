@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router, RouterEvent } from '@angular/router';
 import { AppServiceService } from './service/app-service.service';
 import { HelperService } from './service/helper.service';
 
@@ -37,8 +37,14 @@ export class AppComponent implements OnInit{
             this.helperService.showLoader.next(false)
             break;
           }
-          default:
+          case event instanceof NavigationCancel: {
             this.helperService.showLoader.next(false)
+            // this.router.navigate([''])
+            break;
+          }
+          default:
+            this.helperService.showLoader.next(false);
+
             break;
         }
       });

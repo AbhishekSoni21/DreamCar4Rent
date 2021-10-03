@@ -22,6 +22,8 @@ export class AppServiceService {
 
   userDetails = new BehaviorSubject(<UserDetail|null>{})
 
+  isAdmin= new BehaviorSubject(false)
+
   signUp(email:string,password:string){
    return this.httpClient.post<SignUpInResponse>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${config.API_KEY}`,{email:email,password:password,returnSecureToken:true})
   }
@@ -38,6 +40,7 @@ export class AppServiceService {
     clearTimeout();
     this.router.navigate(['']);
     this.userDetails.next({} as UserDetail)
+    this.isAdmin.next(false)
   }
 
   autoSignOut(expirationDuration:number){
@@ -115,6 +118,10 @@ export class AppServiceService {
 
   getAllBookingDetails():Observable<any>{
     return this.httpClient.get(config.APP_Endpoint+'AllBookingDetails.json')
+  }
+
+  getAdminList():Observable<any>{
+    return this.httpClient.get(config.APP_Endpoint+'AdminList.json')
   }
 
 }

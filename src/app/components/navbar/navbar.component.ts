@@ -12,6 +12,8 @@ import { EncryptDecryptService } from 'src/app/service/encrypt-decrypt.service';
 export class NavbarComponent implements OnInit {
   loggedIn=false;
   user={} as UserDetail|null;
+  adminList=[];
+  isAdmin=false;
   constructor(private appService:AppServiceService,private encryptDecryptService:EncryptDecryptService) {  }
 
   ngOnInit(): void {
@@ -27,6 +29,20 @@ export class NavbarComponent implements OnInit {
       this.user=res?.displayName===undefined?null:res;
     }
     )
+
+    this.appService.getAdminList().pipe(map(res=>this.encryptDecryptService.decryptData(res))).subscribe(response=>{
+      console.log("admin",response);
+      this.adminList=response.data;
+      this.adminList.map(data=>{if(data===this.appService.user.value?.localId){
+        this.appService.isAdmin.next(true)
+        this.isAdmin=true;
+      }
+      else{
+        this.appService.isAdmin.next(false)
+        this.isAdmin=false;
+      }})
+
+    })
   }
 
   handleSignOut(){
