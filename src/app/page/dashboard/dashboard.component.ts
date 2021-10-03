@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.carList=this.encryptDecrypt.decryptData(this.route.snapshot.data.carlist)
+    // this.encryptDecrypt.encryptData({data:['Q4rqGdSdSKg9I261ESRupCG9hlu2','2jplUvomTuYHYIZ0ySsG95JFOuq2']})
     // this.appService
     //   .getCarList()
     //   .pipe(map((res) => this.encryptDecrypt.decryptData(res)))
