@@ -1,0 +1,197 @@
+<div
+  class="
+  modal-dialog
+  "
+  [ngStyle]="{ display: show ? 'unset' : 'none' }"
+>
+  <div
+    class="modal fade"
+    id="requestFormPopUP"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog  modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header" style="background: lightgrey">
+          <h5 class="modal-title" id="staticBackdropLabel">
+            Booking Request Form{{type.toLowerCase()=='update'?'Update Booking Request Form':'View Booking Request'}}
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="bookingRequestForm" (ngSubmit)="handleSubmit()">
+            <div
+             class="mb-3 col-md-5">
+              <label for="carBrand" class="form-label"
+                >Car </label
+              >
+              <input
+                class="form-control"
+                type="text"
+                id="carBrand"
+                formControlName="carBrand"
+              />
+            </div>
+
+            <div class="mb-3 col-md-5">
+              <label for="carModel" class="form-label"
+                >Car </label
+              >
+              <input
+                class="form-control"
+                type="text"
+                id="carModel"
+                formControlName="carModel"
+              />
+            </div>
+            <div class="mb-3 col-md-5">
+              <label for="bookingDate" class="form-label"
+                >Booked On</label
+              >
+              <input
+                class="form-control"
+                type="date"
+                id="bookingDate"
+                formControlName="bookingDate"
+              />
+
+            </div>
+            <div class="mb-3 col-md-5">
+              <label for="bookingFromDate" class="form-label"
+                >Booking Date</label
+              >
+              <input
+                class="form-control"
+                type="date"
+                id="bookingFromDate"
+                formControlName="bookingFromDate"
+                (change)="onDateChange($event)"
+              />
+              <small
+                *ngIf="getControl('bookingFromDate')"
+                class="form-text w-100 custom-text-danger"
+                >Booking Date cannot be empty or a past date.</small
+              >
+            </div>
+            <div class="mb-3 col-md-5" *ngIf="booking.status.toLowerCase()==='cancelled'">
+              <label for="cancelDate" class="form-label"
+                >Booking Cancel On</label
+              >
+              <input
+                class="form-control"
+                type="date"
+                id="cancelDate"
+                formControlName="cancelDate"
+              />
+
+            </div>
+            <div class="mb-3 col-md-8">
+              <label for="noOfDays" class="form-label">No Of Days</label>
+              <input
+                type="number"
+                class="form-control"
+                id="noOfDays"
+                placeholder="Enter No of Days"
+                formControlName="noOfDays"
+                (change)="calculateBookingAmount()"
+              />
+              <small
+                *ngIf="getControl('noOfDays')"
+                class="form-text w-100 custom-text-danger"
+                >No Of Days cannot be empty or more than 30 days.
+              </small>
+            </div>
+
+            <div class="mb-3 col-md-8">
+              <label for="comments" class="form-label">Comments</label>
+              <textarea
+                type="text"
+                class="form-control"
+                id="comments"
+                placeholder="Enter comments if any"
+                formControlName="comments"
+              ></textarea>
+              <small
+                *ngIf="getControl('comments')"
+                class="form-text w-100 custom-text-danger"
+                >Comments cannot be more than 300 characters.
+              </small>
+            </div>
+            <div class="mb-3 col-md-8" *ngIf="booking.status.toLowerCase()!=='pending'">
+              <label for="adminComment" class="form-label">Admin Comment</label>
+              <textarea
+                type="text"
+                class="form-control"
+                id="adminComment"
+                placeholder="Enter comment if any"
+                formControlName="adminComment"
+              ></textarea>
+            </div>
+            <div class="modal-footer paymentSection">
+              <div class="individualAmount">
+                <span class="label">Total Rent Amount</span>
+                <span class="bookingAmount"
+                  ><span class="ruppeeSymbol">₹</span
+                  ><span class="amount">{{
+                    bookingAmount ? bookingAmount : +currentCarDetail?.rentPrice! * 1
+                  }}</span></span
+                >
+              </div>
+              <div class="individualAmount">
+                <span class="label">GST (5%)</span>
+                <span class="bookingAmount"
+                  ><span class="ruppeeSymbol">₹</span
+                  >{{
+                    bookingAmount
+                      ? bookingAmount * 0.05
+                      : +currentCarDetail?.rentPrice! * 1 * 0.05
+                  }}</span
+                >
+              </div>
+              <div class="individualAmount">
+                <span class="label">Security Deposit</span>
+                <span class="bookingAmount"
+                  ><span class="ruppeeSymbol">₹</span
+                  >{{
+                    bookingAmount
+                      ? bookingAmount * 0.3
+                      : +currentCarDetail?.rentPrice! * 1 * 0.3
+                  }}</span
+                >
+              </div>
+
+              <div class="payableAmount">
+                <span class="label">Total {{booking.status.toLowerCase()==='cancelled'?'Refundable':'Payable'}} Amount</span>
+                <span class="bookingAmount"
+                  ><span class="ruppeeSymbol">₹</span
+                  >{{
+                    bookingAmount
+                      ? bookingAmount +
+                        bookingAmount * 0.05 +
+                        bookingAmount * 0.3
+                      : +currentCarDetail?.rentPrice! * 1 +
+                        +currentCarDetail?.rentPrice! * 1 * 0.05 +
+                        +currentCarDetail?.rentPrice! * 1 * 0.3
+                  }}</span
+                >
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" *ngIf="(booking.status.toLowerCase()==='approved') ||(booking.status.toLowerCase()==='cancelled')" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" *ngIf="(booking.status.toLowerCase()==='pending') " class="btn btn-primary">Update Book</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-popup-modal [model]="dataObj" *ngIf="dataObj"></app-popup-modal>

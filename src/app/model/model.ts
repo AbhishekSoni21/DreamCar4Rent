@@ -36,4 +36,7 @@ export interface BookingRequest{
   bookingAmount:string;
   userId:string;
   status:string;
+  bookingDate:string;
+  cancelledOn?:string;
+  adminComment:string;
 }

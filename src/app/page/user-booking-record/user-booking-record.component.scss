@@ -13,3 +13,8 @@
 thead,tbody > tr >th,td{
   text-align: center;
 }
+
+.wrapper-container{
+display: flex;
+flex-direction: row;
+}

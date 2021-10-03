@@ -21,6 +21,7 @@ import { RequestFormModalComponent } from './components/request-form-modal/reque
 import { UserBookingRecordComponent } from './page/user-booking-record/user-booking-record.component';
 import { FetchAllBookingDetailsResolver } from './resolver/fetch-all-booking-details.resolver';
 import { FetchAllCarListResolver } from './resolver/fetch-all-car-list.resolver';
+import { BookingFormModalComponent } from './components/booking-form-modal/booking-form-modal.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { FetchAllCarListResolver } from './resolver/fetch-all-car-list.resolver'
     CardComponent,
     RequestFormModalComponent,
     UserBookingRecordComponent,
+    BookingFormModalComponent,
   ],
   imports: [
     BrowserModule,

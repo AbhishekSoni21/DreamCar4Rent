@@ -1,0 +1,32 @@
+.ruppeeSymbol{
+  font-size: 22px;
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.bookingAmount{
+
+}
+
+.amount{
+
+}
+
+.paymentSection{
+  display: flex;
+  flex-direction: column;
+}
+
+.payableAmount{
+  display: flex;
+  align-items: flex-end;
+  width: 75%;
+  justify-content: space-evenly;
+}
+
+.individualAmount{
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}

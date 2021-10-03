@@ -70,9 +70,11 @@ export class RequestFormModalComponent implements OnInit {
     let currentBooking:BookingRequest=this.bookingForm.value;
     currentBooking.carId=this.car.carId;
     currentBooking.userId=this.appService.user.value?.localId!;
-    currentBooking.bookingAmount=(+this.bookingForm.value['noOfDays']*+this.car.rentPrice).toString();
+    currentBooking.bookingAmount=(+this.bookingForm.value['noOfDays']*+this.car.rentPrice + (+this.bookingForm.value['noOfDays']*+this.car.rentPrice)*0.3 + (+this.bookingForm.value['noOfDays']*+this.car.rentPrice *0.05))
+    .toString();
     currentBooking.status='pending';
     currentBooking.bookingId=this.nextBookingId;
+    currentBooking.bookingDate=new Date().toISOString().slice(0,10)
     this.bookingDetailsList.push(currentBooking)
     this.appService.updateAllBookingDetails(this.encryptDecrypt.encryptData(this.bookingDetailsList)).subscribe(res=>{
       document.querySelectorAll<HTMLElement>('[data-bs-dismiss="modal"]')[0].click()

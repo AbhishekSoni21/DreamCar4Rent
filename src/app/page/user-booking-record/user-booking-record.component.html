@@ -1,5 +1,15 @@
+
+
+
 <div class="container textColor">
   <div class="row offset-md-1 col-md-10">
+    <div class="row offset-md-3 col-md-5 mb-5">
+    <label for="exampleDataList" class="form-label">Filter Booking Details</label>
+<div class="wrapper-container">
+<input class="form-control" #searchParam list="datalistOptions" id="exampleDataList" placeholder="Type your search criteria">
+<button class="btn btn-outline-primary mx-5" (click)="filterResult(searchParam.value)">Search</button>
+</div>
+</div>
     <table class="table table-striped table-hover">
       <table class="table textColor">
         <thead>
@@ -18,12 +28,15 @@
             <td>{{ detail.bookingFromDate }}</td>
             <td>{{ detail.noOfDays }}</td>
             <td>₹ {{ detail.bookingAmount }}</td>
-            <td>{{ detail.status }}</td>
+            <td>{{ detail.status|titlecase }}</td>
             <td class="button-wrapper">
-              <button class="btn btn-primary" (click)="updateBooking(detail)">
+              <button *ngIf="!(['cancelled','approved'].indexOf(detail.status.toLowerCase())>=0)" class="btn btn-primary" (click)="updateBooking(detail,'update')">
                 Update Booking</button
-              ><button class="btn btn-danger" (click)="cancelBooking(detail)">
+              ><button *ngIf="!(detail.status.toLowerCase()==='cancelled')" class="btn btn-danger" (click)="cancelBooking(detail)">
                 Cancel Booking
+              </button>
+              <button *ngIf="(detail.status.toLowerCase()==='cancelled')" class="btn btn-info" (click)="updateBooking(detail,'view')">
+                View Booking
               </button>
             </td>
           </tr>
@@ -32,3 +45,5 @@
     </table>
   </div>
 </div>
+<app-booking-form-modal [booking]='selectedBooking' [show]="openRequestForm" [type]="requestType" [bookingList]="bookingDetails" [currentCarDetail]="currentCar"></app-booking-form-modal>
+<app-popup-modal [model]="dataObj" *ngIf="!!dataObj"></app-popup-modal>
